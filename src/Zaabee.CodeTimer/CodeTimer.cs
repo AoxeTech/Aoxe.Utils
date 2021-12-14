@@ -19,7 +19,7 @@ public class CodeTimer
         if (string.IsNullOrEmpty(name)) return;
 
         // 1.
-        Debug.WriteLine(name);
+        Trace.WriteLine(name);
 
         // 2.
         GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
