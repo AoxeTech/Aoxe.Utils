@@ -38,18 +38,17 @@ public class CodeTimer
         watch.Stop();
 
         // 4.
-        
-        Debug.WriteLine("\tTime Elapsed:\t" + watch.ElapsedMilliseconds.ToString("N0") + "ms");
-        Debug.WriteLine("\tCPU Cycles:\t" + cpuCycles.ToString("N0"));
+        Trace.WriteLine("\tTime Elapsed:\t" + watch.ElapsedMilliseconds.ToString("N0") + "ms");
+        Trace.WriteLine("\tCPU Cycles:\t" + cpuCycles.ToString("N0"));
 
         // 5.
         for (var i = 0; i <= GC.MaxGeneration; i++)
         {
             var count = GC.CollectionCount(i) - gcCounts[i];
-            Debug.WriteLine("\tGen " + i + ": \t\t" + count);
+            Trace.WriteLine("\tGen " + i + ": \t\t" + count);
         }
 
-        Debug.WriteLine("");
+        Trace.WriteLine("");
     }
 
     private static ulong GetCycleCount()
