@@ -23,15 +23,18 @@ public class UnitTest
 
         CodeTimer.Time("Lambda", iteration, () =>
         {
-            var results = models.Where(p => p.Name is "Name").Select(ConvertToDto).ToList();
+            var results = models.Where(p => p.Name is "Name")
+                .Select(ConvertToDto)
+                .Select(ConvertToModel)
+                .ToList();
         });
         CodeTimer.Time("Foreach", iteration, () =>
         {
-            var results = new List<TestDto>();
+            var results = new List<TestModel>();
             foreach (var testModel in models)
             {
                 if (testModel.Name is "Name")
-                    results.Add(ConvertToDto(testModel));
+                    results.Add(ConvertToModel(ConvertToDto(testModel)));
             }
         });
     }
