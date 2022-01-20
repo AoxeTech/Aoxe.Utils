@@ -14,9 +14,9 @@ public class CodeTimer
         Time("", 1, () => { });
     }
 
-    public static void Time(string name, int iteration, Action action)
+    public static Summary Time(string name, int iteration, Action action)
     {
-        if (string.IsNullOrEmpty(name)) return;
+        if (string.IsNullOrEmpty(name)) return new Summary();
 
         // 1.
         Trace.WriteLine(name);
@@ -34,21 +34,34 @@ public class CodeTimer
         watch.Start();
         var cycleCount = GetCycleCount();
         for (var i = 0; i < iteration; i++) action();
-        var cpuCycles = GetCycleCount() - cycleCount;
         watch.Stop();
-
+        var cpuCycles = GetCycleCount() - cycleCount;
+        
         // 4.
-        Trace.WriteLine("\tTime Elapsed:\t" + watch.ElapsedMilliseconds.ToString("N0") + "ms");
-        Trace.WriteLine("\tCPU Cycles:\t" + cpuCycles.ToString("N0"));
-
-        // 5.
+        var summary = new Summary
+        {
+            Name = name,
+            ElapsedMilliseconds = watch.ElapsedMilliseconds,
+            CpuCycle = cpuCycles
+        };
         for (var i = 0; i <= GC.MaxGeneration; i++)
         {
             var count = GC.CollectionCount(i) - gcCounts[i];
-            Trace.WriteLine("\tGen " + i + ": \t\t" + count);
+            summary.GenCounts.Add(new GenCount
+            {
+                Gen = i,
+                Count = count
+            });
         }
 
+        // 5.
+        Trace.WriteLine("\tTime Elapsed:\t" + summary.ElapsedMilliseconds.ToString("N0") + "ms");
+        Trace.WriteLine("\tCPU Cycles:\t" + summary.CpuCycle.ToString("N0"));
+        foreach (var genCount in summary.GenCounts)
+            Trace.WriteLine("\tGen " + genCount.Gen + ": \t\t" + genCount.Count);
         Trace.WriteLine("");
+
+        return summary;
     }
 
     private static ulong GetCycleCount()
