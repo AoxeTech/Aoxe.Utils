@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Zaabee.CodeTimer;
 
@@ -8,6 +9,13 @@ public class Summary
     public long ElapsedMilliseconds { get; set; }
     public ulong CpuCycle { get; set; }
     public List<GenCount> GenCounts { get; set; } = new();
+
+    public override string ToString() =>
+        $@"
+Name:   {Name}
+Time Elapsed:   {ElapsedMilliseconds:N0}ms
+CPU Cycles: {CpuCycle:N0}
+{string.Join("\r\n",GenCounts.Select(genCount => $"Gen {genCount.Gen}\t\t{genCount.Count}"))}";
 }
 
 public class GenCount
