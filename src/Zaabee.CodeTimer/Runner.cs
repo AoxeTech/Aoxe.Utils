@@ -1,12 +1,6 @@
-﻿using System;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Threading;
+﻿namespace Zaabee.CodeTimer;
 
-namespace Zaabee.CodeTimer;
-
-public class CodeTimer
+public static class Runner
 {
     public static void Initialize()
     {
@@ -21,15 +15,10 @@ public class CodeTimer
 
         // 1.
         GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
-        var gcCounts = new int[GC.MaxGeneration + 1];
-        for (var i = 0; i <= GC.MaxGeneration; i++)
-        {
-            gcCounts[i] = GC.CollectionCount(i);
-        }
+        var gcCounts = Enumerable.Range(0, GC.MaxGeneration + 1).Select(GC.CollectionCount).ToArray();
 
         // 2.
-        var watch = new Stopwatch();
-        watch.Start();
+        var watch = Stopwatch.StartNew();
         var cycleCount = GetCycleCount();
         for (var i = 0; i < iteration; i++) action();
         watch.Stop();

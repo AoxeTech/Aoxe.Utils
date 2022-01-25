@@ -6,11 +6,11 @@ Console.WriteLine("Begin!");
 
 var bytes = new byte[1000000000];
 
-CodeTimer.Initialize();
+Runner.Initialize();
 
-Console.WriteLine(CodeTimer.Time("Length",1000, () => { var result = bytes.Length; }));
-Console.WriteLine(CodeTimer.Time("LongLength",1000, () => { var result = bytes.LongLength; }));
-Console.WriteLine(CodeTimer.Time("NotAny",1000, () => { var result = !bytes.Any(); }));
+Console.WriteLine(Runner.Time("Length",1000, () => { var result = bytes.Length; }));
+Console.WriteLine(Runner.Time("LongLength",1000, () => { var result = bytes.LongLength; }));
+Console.WriteLine(Runner.Time("NotAny",1000, () => { var result = !bytes.Any(); }));
 
 Console.WriteLine("Complete!");
 

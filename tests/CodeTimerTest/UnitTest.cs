@@ -18,17 +18,17 @@ public class UnitTest
         Trace.WriteLine($"Quantity is {quantity}.");
         Trace.WriteLine($"Iteration is {iteration}.");
 
-        CodeTimer.Initialize();
+        Runner.Initialize();
         Trace.WriteLine($"CodeTimer has been initialized on {DateTime.Now}.");
 
-        CodeTimer.Time("Lambda", iteration, () =>
+        var lambdaSummary = Runner.Time("Lambda", iteration, () =>
         {
             var results = models.Where(p => p.Name is "Name")
                 .Select(ConvertToDto)
                 .Select(ConvertToModel)
                 .ToList();
         });
-        CodeTimer.Time("Foreach", iteration, () =>
+        var foreachSummary = Runner.Time("Foreach", iteration, () =>
         {
             var results = new List<TestModel>();
             foreach (var testModel in models)
@@ -37,6 +37,8 @@ public class UnitTest
                     results.Add(ConvertToModel(ConvertToDto(testModel)));
             }
         });
+        Trace.WriteLine(lambdaSummary);
+        Trace.WriteLine(foreachSummary);
     }
 
     private static TestModel ConvertToModel(TestDto testDto) =>
