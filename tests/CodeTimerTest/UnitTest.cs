@@ -2,17 +2,16 @@ namespace CodeTimerTest;
 
 public class UnitTest
 {
-    [Fact]
-    public void Test()
+    [Theory]
+    [InlineData(100, 10000)]
+    public void Test(int quantity, int iteration)
     {
-        const int quantity = 100;
-        const int iteration = 10000;
         var targetFrameworkAttribute = Assembly.GetExecutingAssembly()
             .GetCustomAttributes(typeof(TargetFrameworkAttribute), false)
             .SingleOrDefault() as TargetFrameworkAttribute;
         Trace.Listeners.Add(new ConsoleTraceListener());
 
-        var models = CreateModels(quantity);
+        var models = TestHelper.CreateModels(quantity);
 
         Trace.WriteLine($"The target framework is {targetFrameworkAttribute?.FrameworkName}.");
         Trace.WriteLine($"Quantity is {quantity}.");
@@ -24,8 +23,8 @@ public class UnitTest
         var lambdaSummary = Runner.Time("Lambda", iteration, () =>
         {
             var results = models.Where(p => p.Name is "Name")
-                .Select(ConvertToDto)
-                .Select(ConvertToModel)
+                .Select(TestHelper.ConvertToDto)
+                .Select(TestHelper.ConvertToModel)
                 .ToList();
         });
         var foreachSummary = Runner.Time("Foreach", iteration, () =>
@@ -34,46 +33,10 @@ public class UnitTest
             foreach (var testModel in models)
             {
                 if (testModel.Name is "Name")
-                    results.Add(ConvertToModel(ConvertToDto(testModel)));
+                    results.Add(TestHelper.ConvertToModel(TestHelper.ConvertToDto(testModel)));
             }
         });
         Trace.WriteLine(lambdaSummary);
         Trace.WriteLine(foreachSummary);
     }
-
-    private static TestModel ConvertToModel(TestDto testDto) =>
-        new()
-        {
-            Id = testDto.Id,
-            Name = testDto.Name,
-            Address = testDto.Address,
-            CreateTime = testDto.CreateTime,
-            Tags = testDto.Tags.ToList()
-        };
-
-    private static TestDto ConvertToDto(TestModel testModel) =>
-        new()
-        {
-            Id = testModel.Id,
-            Name = testModel.Name,
-            Address = testModel.Address,
-            CreateTime = testModel.CreateTime,
-            Tags = testModel.Tags.ToList()
-        };
-
-    private static List<TestModel> CreateModels(int quantity) =>
-        Enumerable.Range(0, quantity).Select(_ => CreateModel()).ToList();
-
-    private static TestModel CreateModel() =>
-        new()
-        {
-            Id = Guid.NewGuid(),
-            Name = "Name",
-            Address = "Address",
-            CreateTime = DateTime.Now,
-            Tags = new List<string>
-            {
-                "Apple", "Banana", "Pear"
-            }
-        };
 }
