@@ -18,7 +18,7 @@ public static class TestHelper
             }
         };
     
-    public static TestModel ConvertToModel(TestDto testDto) =>
+    public static TestModel ToModel(this TestDto testDto) =>
         new()
         {
             Id = testDto.Id,
@@ -28,7 +28,7 @@ public static class TestHelper
             Tags = testDto.Tags.ToList()
         };
 
-    public static TestDto ConvertToDto(TestModel testModel) =>
+    public static TestDto ToDto(this TestModel testModel) =>
         new()
         {
             Id = testModel.Id,
