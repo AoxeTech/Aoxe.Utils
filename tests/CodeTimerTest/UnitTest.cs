@@ -23,8 +23,7 @@ public class UnitTest
         var lambdaSummary = Runner.Time("Lambda", iteration, () =>
         {
             var results = models.Where(p => p.Name is "Name")
-                .Select(TestHelper.ConvertToDto)
-                .Select(TestHelper.ConvertToModel)
+                .Select(a => TestHelper.ConvertToModel(TestHelper.ConvertToDto(a)))
                 .ToList();
         });
         var foreachSummary = Runner.Time("Foreach", iteration, () =>
