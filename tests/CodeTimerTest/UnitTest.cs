@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace CodeTimerTest;
 
 public class UnitTest
@@ -36,6 +38,53 @@ public class UnitTest
             }
         });
         Trace.WriteLine(lambdaSummary);
+        Trace.WriteLine(foreachSummary);
+    }
+
+    [Theory]
+    [InlineData(32, 10000)]
+    public void StringConcatenationTest(int strLength, int iteration)
+    {
+        var targetFrameworkAttribute = Assembly.GetExecutingAssembly()
+            .GetCustomAttributes(typeof(TargetFrameworkAttribute), false)
+            .SingleOrDefault() as TargetFrameworkAttribute;
+        Trace.Listeners.Add(new ConsoleTraceListener());
+        Trace.WriteLine($"The target framework is {targetFrameworkAttribute?.FrameworkName}.");
+        
+        var random = new Random();
+        const string charSet = "abcdefghigklmnopqrstuvwxyz0123456789";
+
+        Runner.Initialize();
+        Trace.WriteLine($"CodeTimer has been initialized on {DateTime.Now}.");
+
+        var lambdaSummary = Runner.Time("Lambda", iteration, () =>
+        {
+            var outStr = new string(
+                Enumerable.Range(0, strLength)
+                    .Select(i => charSet[random.Next(0, charSet.Length)])
+                    .ToArray()
+            );
+        });
+        var stringBuilderSummary = Runner.Time("stringBuilder", iteration, () =>
+        {
+            var outStr = new StringBuilder();
+
+            for (var i = 0; i < strLength; i++)
+            {
+                outStr.Append(charSet.Substring(random.Next(0, charSet.Length), 1));
+            }
+        });
+        var foreachSummary = Runner.Time("Foreach", iteration, () =>
+        {
+            var outStr = string.Empty;
+
+            for (var i = 0; i < strLength; i++)
+            {
+                outStr += charSet.Substring(random.Next(0, charSet.Length), 1);
+            }
+        });
+        Trace.WriteLine(lambdaSummary);
+        Trace.WriteLine(stringBuilderSummary);
         Trace.WriteLine(foreachSummary);
     }
 }
