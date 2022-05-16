@@ -42,7 +42,7 @@ public class UnitTest
     }
 
     [Theory]
-    [InlineData(32, 10000)]
+    [InlineData(32, 100000)]
     public void StringConcatenationTest(int strLength, int iteration)
     {
         var targetFrameworkAttribute = Assembly.GetExecutingAssembly()
@@ -67,12 +67,14 @@ public class UnitTest
         });
         var stringBuilderSummary = Runner.Time("stringBuilder", iteration, () =>
         {
-            var outStr = new StringBuilder();
+            var stringBuilder = new StringBuilder();
 
             for (var i = 0; i < strLength; i++)
             {
-                outStr.Append(charSet.Substring(random.Next(0, charSet.Length), 1));
+                stringBuilder.Append(charSet.Substring(random.Next(0, charSet.Length), 1));
             }
+
+            var outStr = stringBuilder.ToString();
         });
         var foreachSummary = Runner.Time("foreach", iteration, () =>
         {
