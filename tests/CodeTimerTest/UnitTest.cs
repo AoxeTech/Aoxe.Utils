@@ -74,7 +74,7 @@ public class UnitTest
                 outStr.Append(charSet.Substring(random.Next(0, charSet.Length), 1));
             }
         });
-        var foreachSummary = Runner.Time("Foreach", iteration, () =>
+        var foreachSummary = Runner.Time("foreach", iteration, () =>
         {
             var outStr = string.Empty;
 
