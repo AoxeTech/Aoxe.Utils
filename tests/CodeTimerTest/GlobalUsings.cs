@@ -4,5 +4,6 @@ global using System.Diagnostics;
 global using System.Linq;
 global using System.Reflection;
 global using System.Runtime.Versioning;
+global using System.Text;
 global using Xunit;
 global using Zaabee.CodeTimer;
