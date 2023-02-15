@@ -1,6 +1,6 @@
 namespace Zaabee.Fake;
 
-internal class FakeNetworkStream : Stream
+public class FakeNetworkStream : Stream
 {
     private Stream Inner { get; }
     private int Threshold { get; }
