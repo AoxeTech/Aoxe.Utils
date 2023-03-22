@@ -5,7 +5,7 @@ namespace Zaabee.SequentialGuid;
 /// </summary>
 public enum SequentialGuidType
 {
-    SequentialAsString,
-    SequentialAsBinary,
-    SequentialAtEnd
+    AsString,
+    AsBinary,
+    AtEnd
 }

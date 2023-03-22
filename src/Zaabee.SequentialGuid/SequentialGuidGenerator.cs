@@ -6,7 +6,7 @@ namespace Zaabee.SequentialGuid;
 /// </summary>
 public static class SequentialGuidHelper
 {
-    public static Guid GenerateComb(SequentialGuidType guidType = SequentialGuidType.SequentialAsString)
+    public static Guid GenerateComb(SequentialGuidType guidType = SequentialGuidType.AsString)
     {
         var randomBytes = new byte[10];
         using (var rng = RandomNumberGenerator.Create())
@@ -21,20 +21,20 @@ public static class SequentialGuidHelper
 
         switch (guidType)
         {
-            case SequentialGuidType.SequentialAsString:
-            case SequentialGuidType.SequentialAsBinary:
+            case SequentialGuidType.AsString:
+            case SequentialGuidType.AsBinary:
                 Buffer.BlockCopy(timestampBytes, 2, guidBytes, 0, 6);
                 Buffer.BlockCopy(randomBytes, 0, guidBytes, 6, 10);
                 // If formatting as a string, we have to reverse the order
                 // of the Data1 and Data2 blocks on little-endian systems.
-                if (guidType is SequentialGuidType.SequentialAsString && BitConverter.IsLittleEndian)
+                if (guidType is SequentialGuidType.AsString && BitConverter.IsLittleEndian)
                 {
                     Array.Reverse(guidBytes, 0, 4);
                     Array.Reverse(guidBytes, 4, 2);
                 }
 
                 break;
-            case SequentialGuidType.SequentialAtEnd:
+            case SequentialGuidType.AtEnd:
                 Buffer.BlockCopy(randomBytes, 0, guidBytes, 0, 10);
                 Buffer.BlockCopy(timestampBytes, 2, guidBytes, 10, 6);
                 break;

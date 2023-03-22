@@ -5,9 +5,9 @@ public class UnitTest
     private const int Quantity = 1000;
 
     [Theory]
-    [InlineData(SequentialGuidType.SequentialAsBinary)]
-    [InlineData(SequentialGuidType.SequentialAsString)]
-    [InlineData(SequentialGuidType.SequentialAtEnd)]
+    [InlineData(SequentialGuidType.AsBinary)]
+    [InlineData(SequentialGuidType.AsString)]
+    [InlineData(SequentialGuidType.AtEnd)]
     public void TestSequential(SequentialGuidType sequentialGuidType)
     {
         var guids = new Guid[Quantity];
