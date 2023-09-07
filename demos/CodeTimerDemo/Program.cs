@@ -2,13 +2,19 @@
 
 Console.WriteLine("Begin!");
 
-var bytes = new byte[1000000000];
+var testList = Enumerable.Range(0, 10).ToList();
 
 Runner.Initialize();
 
-Console.WriteLine(Runner.Time("Length",1000, () => { var result = bytes.Length; }));
-Console.WriteLine(Runner.Time("LongLength",1000, () => { var result = bytes.LongLength; }));
-Console.WriteLine(Runner.Time("NotAny",1000, () => { var result = !bytes.Any(); }));
+Console.WriteLine(Runner.Time("Count()",100_000_000, () =>
+{
+    var result = testList.Count();
+}));
+
+Console.WriteLine(Runner.Time("Count",100_000_000, () =>
+{
+    var result = testList.Count;
+}));
 
 Console.WriteLine("Complete!");
 
