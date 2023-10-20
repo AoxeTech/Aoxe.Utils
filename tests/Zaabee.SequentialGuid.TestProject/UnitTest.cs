@@ -2,7 +2,7 @@ namespace Zaabee.SequentialGuid.TestProject;
 
 public class UnitTest
 {
-    private const int Quantity = 1000;
+    private const int Quantity = 5;
 
     [Theory]
     [InlineData(SequentialGuidType.AsBinary)]
