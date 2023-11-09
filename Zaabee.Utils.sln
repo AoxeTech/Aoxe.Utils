@@ -18,10 +18,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zaabee.NumeralSystemConvert
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zaabee.NumeralSystemConverter.Test", "tests\Zaabee.NumeralSystemConverter.Test\Zaabee.NumeralSystemConverter.Test.csproj", "{CE82E955-5335-42A0-B9B6-EAC8508F5310}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zaabee.SequentialGuid", "src\Zaabee.SequentialGuid\Zaabee.SequentialGuid.csproj", "{A801B5B5-4F0A-43C9-864C-72645FC1ADD1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zaabee.SequentialGuid.TestProject", "tests\Zaabee.SequentialGuid.TestProject\Zaabee.SequentialGuid.TestProject.csproj", "{74CFCA27-A447-4DDA-AF2D-3C73BF664827}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,14 +48,6 @@ Global
 		{CE82E955-5335-42A0-B9B6-EAC8508F5310}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE82E955-5335-42A0-B9B6-EAC8508F5310}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE82E955-5335-42A0-B9B6-EAC8508F5310}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A801B5B5-4F0A-43C9-864C-72645FC1ADD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A801B5B5-4F0A-43C9-864C-72645FC1ADD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A801B5B5-4F0A-43C9-864C-72645FC1ADD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A801B5B5-4F0A-43C9-864C-72645FC1ADD1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{74CFCA27-A447-4DDA-AF2D-3C73BF664827}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74CFCA27-A447-4DDA-AF2D-3C73BF664827}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74CFCA27-A447-4DDA-AF2D-3C73BF664827}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74CFCA27-A447-4DDA-AF2D-3C73BF664827}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DA25BE9F-CF85-4618-A0D9-4221712B7AA8} = {AA21AC87-88A0-444A-90F2-C3ED27CC2E94}
@@ -68,7 +56,5 @@ Global
 		{E283BB6D-0ED9-4477-8527-92960CF8EE64} = {AA21AC87-88A0-444A-90F2-C3ED27CC2E94}
 		{1C6BBE95-4580-456B-8B62-01DAE4913C04} = {AA21AC87-88A0-444A-90F2-C3ED27CC2E94}
 		{CE82E955-5335-42A0-B9B6-EAC8508F5310} = {C62D7874-AEA6-4BCF-A909-3A3FE8C68401}
-		{A801B5B5-4F0A-43C9-864C-72645FC1ADD1} = {AA21AC87-88A0-444A-90F2-C3ED27CC2E94}
-		{74CFCA27-A447-4DDA-AF2D-3C73BF664827} = {C62D7874-AEA6-4BCF-A909-3A3FE8C68401}
 	EndGlobalSection
 EndGlobal
