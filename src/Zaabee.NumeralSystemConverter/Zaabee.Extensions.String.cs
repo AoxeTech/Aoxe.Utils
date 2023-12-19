@@ -2,15 +2,22 @@ namespace Zaabee.NumeralSystemConverter;
 
 public static partial class ZaabeeExtension
 {
-    public static int ToInt(this string value, NumeralSystem numeralSystem, bool inverted = false) =>
-        value.ToInt((byte)numeralSystem, inverted);
+    public static int ToInt(
+        this string value,
+        NumeralSystem numeralSystem,
+        bool inverted = false
+    ) => value.ToInt((byte)numeralSystem, inverted);
 
-    public static long ToLong(this string value, NumeralSystem numeralSystem, bool inverted = false) =>
-        value.ToLong((byte)numeralSystem, inverted);
+    public static long ToLong(
+        this string value,
+        NumeralSystem numeralSystem,
+        bool inverted = false
+    ) => value.ToLong((byte)numeralSystem, inverted);
 
     public static int ToInt(this string value, byte fromBase, bool inverted = false)
     {
-        if (string.IsNullOrWhiteSpace(value)) return default;
+        if (string.IsNullOrWhiteSpace(value))
+            return default;
 
         var isMinus = false;
         if (value[0] is '-')
@@ -20,7 +27,10 @@ public static partial class ZaabeeExtension
         }
 
         if (value.Any(c => !char.IsLetterOrDigit(c)))
-            throw new ArgumentException("The string can only contain letter or digit.", nameof(value));
+            throw new ArgumentException(
+                "The string can only contain letter or digit.",
+                nameof(value)
+            );
 
         var charSet = inverted ? Consts.InvertedCharacterSet : Consts.DefaultCharacterSet;
 
@@ -34,7 +44,8 @@ public static partial class ZaabeeExtension
 
     public static long ToLong(this string value, byte fromBase, bool inverted = false)
     {
-        if (string.IsNullOrWhiteSpace(value)) return default;
+        if (string.IsNullOrWhiteSpace(value))
+            return default;
 
         var isMinus = false;
         if (value[0] is '-')
@@ -44,7 +55,10 @@ public static partial class ZaabeeExtension
         }
 
         if (value.Any(c => !char.IsLetterOrDigit(c)))
-            throw new ArgumentException("The string can only contain letter or digit.", nameof(value));
+            throw new ArgumentException(
+                "The string can only contain letter or digit.",
+                nameof(value)
+            );
 
         var charSet = inverted ? Consts.InvertedCharacterSet : Consts.DefaultCharacterSet;
 

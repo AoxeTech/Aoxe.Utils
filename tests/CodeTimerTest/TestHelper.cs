@@ -12,12 +12,9 @@ public static class TestHelper
             Name = "Name",
             Address = "Address",
             CreateTime = DateTime.Now,
-            Tags = new List<string>
-            {
-                "Apple", "Banana", "Pear"
-            }
+            Tags = new List<string> { "Apple", "Banana", "Pear" }
         };
-    
+
     public static TestModel ToModel(this TestDto testDto) =>
         new()
         {

@@ -11,16 +11,21 @@ public static class Runner
 
     public static Summary Time(string name, int iteration, Action action)
     {
-        if (string.IsNullOrEmpty(name)) return new Summary();
+        if (string.IsNullOrEmpty(name))
+            return new Summary();
 
         // 1.
         GC.Collect(GC.MaxGeneration, GCCollectionMode.Forced);
-        var gcCounts = Enumerable.Range(0, GC.MaxGeneration + 1).Select(GC.CollectionCount).ToArray();
+        var gcCounts = Enumerable
+            .Range(0, GC.MaxGeneration + 1)
+            .Select(GC.CollectionCount)
+            .ToArray();
 
         // 2.
         var watch = Stopwatch.StartNew();
         var cycleCount = GetCycleCount();
-        for (var i = 0; i < iteration; i++) action();
+        for (var i = 0; i < iteration; i++)
+            action();
         watch.Stop();
         var cpuCycles = GetCycleCount() - cycleCount;
 
@@ -30,12 +35,10 @@ public static class Runner
             Name = name,
             ElapsedMilliseconds = watch.ElapsedMilliseconds,
             CpuCycle = cpuCycles,
-            GenCounts = Enumerable.Range(0, GC.MaxGeneration + 1)
-                .Select(p => new GenCount
-                {
-                    Gen = p,
-                    Count = GC.CollectionCount(p) - gcCounts[p]
-                }).ToList()
+            GenCounts = Enumerable
+                .Range(0, GC.MaxGeneration + 1)
+                .Select(p => new GenCount { Gen = p, Count = GC.CollectionCount(p) - gcCounts[p] })
+                .ToList()
         };
     }
 

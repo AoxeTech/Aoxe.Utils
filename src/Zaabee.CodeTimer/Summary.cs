@@ -12,7 +12,7 @@ public class Summary
 Name:   {Name}
 Time Elapsed:   {ElapsedMilliseconds:N0}ms
 CPU Cycles: {CpuCycle:N0}
-{string.Join("\r\n",GenCounts.Select(genCount => $"Gen {genCount.Gen}\t\t{genCount.Count}"))}";
+{string.Join("\r\n", GenCounts.Select(genCount => $"Gen {genCount.Gen}\t\t{genCount.Count}"))}";
 }
 
 public class GenCount
