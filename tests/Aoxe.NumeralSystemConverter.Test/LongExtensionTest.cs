@@ -1,4 +1,4 @@
-namespace Zaabee.NumeralSystemConverter.Test;
+namespace Aoxe.NumeralSystemConverter.Test;
 
 public class LongExtensionTest
 {

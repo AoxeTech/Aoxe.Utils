@@ -1,4 +1,4 @@
-namespace Zaabee.NumeralSystemConverter;
+namespace Aoxe.NumeralSystemConverter;
 
 public enum NumeralSystem : byte
 {

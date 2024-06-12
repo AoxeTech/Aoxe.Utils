@@ -2,12 +2,12 @@
 
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0;net6.0;net8.0;net9.0</TargetFrameworks>
-        <PackageVersion>2024.1.4</PackageVersion>
-        <Version>2024.1.4</Version>
-        <Description>From http://blog.zhaojie.me/2009/03/codetimer.html</Description>
-        <PackageTags>Code Timer</PackageTags>
-        <PackageProjectUrl>https://github.com/PicoHex</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/PicoHex/Zaabee.Utils</RepositoryUrl>
+        <PackageVersion>2024.1.0</PackageVersion>
+        <Version>2024.1.0</Version>
+        <Description>Numeral System Converter for C#</Description>
+        <PackageTags>Aoxe;Extensions;Numeral System Converter;Binary;Octal;Decimalism;Hexadecimal;Base36;Base62</PackageTags>
+        <PackageProjectUrl>https://github.com/AoxeTech</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/AoxeTech/Aoxe.Utils</RepositoryUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>

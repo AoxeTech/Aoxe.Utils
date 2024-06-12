@@ -1,4 +1,4 @@
-namespace Zaabee.NumeralSystemConverter;
+namespace Aoxe.NumeralSystemConverter;
 
 internal static class Consts
 {

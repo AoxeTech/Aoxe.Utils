@@ -1,4 +1,4 @@
-namespace Zaabee.Fake;
+namespace Aoxe.Fake;
 
 public class FakeNetworkStream : Stream
 {

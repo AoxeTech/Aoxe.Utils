@@ -1,3 +1,3 @@
 // Global using directives
 
-global using Zaabee.CodeTimer;
+global using Aoxe.CodeTimer;

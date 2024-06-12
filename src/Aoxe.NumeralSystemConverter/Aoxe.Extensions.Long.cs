@@ -1,6 +1,6 @@
-namespace Zaabee.NumeralSystemConverter;
+namespace Aoxe.NumeralSystemConverter;
 
-public static partial class ZaabeeExtension
+public static partial class AoxeExtension
 {
     public static string ToString(
         this long dec,

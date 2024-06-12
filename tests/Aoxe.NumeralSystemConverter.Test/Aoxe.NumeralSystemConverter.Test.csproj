@@ -18,6 +18,6 @@
 		</PackageReference>
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\src\Zaabee.NumeralSystemConverter\Zaabee.NumeralSystemConverter.csproj" />
+		<ProjectReference Include="..\..\src\Aoxe.NumeralSystemConverter\Aoxe.NumeralSystemConverter.csproj" />
 	</ItemGroup>
 </Project>

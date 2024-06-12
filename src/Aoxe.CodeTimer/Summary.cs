@@ -1,4 +1,4 @@
-namespace Zaabee.CodeTimer;
+namespace Aoxe.CodeTimer;
 
 public class Summary
 {
