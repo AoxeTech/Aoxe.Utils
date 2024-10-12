@@ -1,0 +1,14 @@
+﻿<Solution>
+  <Folder Name="/demos/">
+    <Project Path="demos\CodeTimerDemo\CodeTimerDemo.csproj" Type="Classic C#" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src\Aoxe.CodeTimer\Aoxe.CodeTimer.csproj" Type="Classic C#" />
+    <Project Path="src\Aoxe.Fake\Aoxe.Fake.csproj" Type="Classic C#" />
+    <Project Path="src\Aoxe.NumeralSystemConverter\Aoxe.NumeralSystemConverter.csproj" Type="Classic C#" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests\Aoxe.NumeralSystemConverter.Test\Aoxe.NumeralSystemConverter.Test.csproj" Type="Classic C#" />
+    <Project Path="tests\CodeTimerTest\CodeTimerTest.csproj" Type="Classic C#" />
+  </Folder>
+</Solution>
